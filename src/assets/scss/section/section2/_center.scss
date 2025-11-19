@@ -23,6 +23,16 @@
             gap:20px;
             font-weight: bold;
 
+            .preview_box{
+                display:flex;
+                gap:10px;
+                justify-content: center;
+                img{
+                    width:90px;
+                    height:90px;
+                }
+            }
+
             .image_button{
                 width:350px;
                 padding:10px;

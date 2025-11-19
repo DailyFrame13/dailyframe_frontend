@@ -1,9 +1,10 @@
 import "../assets/scss/section/section2/_center.scss"
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const Center = () => {
   
   const fileInputRef = useRef(null);
+  const [previewImages, setPreviewImages] = useState([]); // 미리보기 이미지 상태
 
   const handleUplaodClick = () => {
     fileInputRef.current.click();
@@ -20,9 +21,12 @@ const Center = () => {
       alert("이미지는 3장만 업로드할 수 있어요!")
     }
 
-    console.log("선택된 파일:", selectedFiles);
+    // 파일을 브라우저에서 볼 수 있도록 URL로 변환
+    const imageUrls = selectedFiles.map(file => URL.createObjectURL(file));
 
-    // 여기에서 파일 미리보기, 서버 업로드 등 처리 가능
+    // 상태에 저장 -> 화면에 자동으로 렌더링됨
+    setPreviewImages(imageUrls);
+
   }
 
   return (
@@ -30,6 +34,13 @@ const Center = () => {
       <div className="container1">
         <div className="title">DailyFrame</div>
         <div className="button_containter">
+          {previewImages.length>0 && (
+            <div className="preview_box">
+              {previewImages.map((url, idx) => (
+                <img key={idx} src={url} alt={`preview-${idx}`} className="preview_image" />
+              ))}
+            </div>
+          )}
           <div className="image_button" onClick={handleUplaodClick}>이미지 업로드</div>
           {/* 숨겨진 파일 업로드 input */}
           <input 
