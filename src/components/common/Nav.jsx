@@ -2,8 +2,8 @@ import React from 'react'
 
 const Nav = () => {
   return (
-    <div>
-      nav
+    <div className='nav'>
+      Dailyframe 
     </div>
   )
 }
