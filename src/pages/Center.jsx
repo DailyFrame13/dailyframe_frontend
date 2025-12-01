@@ -45,16 +45,12 @@ const Center = () => {
     try {
       const formData = new FormData();
 
-      // 🚨 [수정 1] 백엔드가 여러 장을 받도록 업그레이드되었으니, 우리도 여러 장을 보냅니다.
-      // 반복문을 돌면서 'files'라는 이름으로 다 담아야 합니다. (백엔드랑 이름 맞춤)
       selectedFiles.forEach((file) => {
         formData.append("files", file); 
       });
 
-      // 🚨 [수정 2] 주소를 Railway 백엔드 주소로 변경!
-      // "http://localhost:3000" 지우고 아까 만든 Railway 주소를 넣으세요.
-      // 예시: "https://dailyframebackend-production.up.railway.app/api/v1/generate"
-      const response = await fetch("https://본인의-Railway-주소.up.railway.app/api/v1/generate", {
+    
+      const response = await fetch("https://dailyframebackend-production.up.railway.app/api/v1/generate", {
         method: "POST",
         body: formData,
       });
