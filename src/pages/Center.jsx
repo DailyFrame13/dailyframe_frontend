@@ -44,12 +44,13 @@ const Center = () => {
 
     try {
       const formData = new FormData();
-      // ⚠️ 주의: 백엔드 API가 현재 '단일 파일(upload.single)'만 받도록 되어 있어서
-      // 일단 첫 번째 사진(selectedFiles[0])만 보냅니다.
-      formData.append("file", selectedFiles[0]);
 
-      // 백엔드로 요청 (API 호출)
-      const response = await fetch("https://3508ce789f77.ngrok-free.app", {
+      selectedFiles.forEach((file) => {
+        formData.append("files", file); 
+      });
+
+    
+      const response = await fetch("https://dailyframebackend-production.up.railway.app/api/v1/generate", {
         method: "POST",
         body: formData,
       });
