@@ -49,7 +49,7 @@ const Center = () => {
       formData.append("file", selectedFiles[0]);
 
       // 백엔드로 요청 (API 호출)
-      const response = await fetch("http://localhost:3000/api/v1/generate", {
+      const response = await fetch("https://3508ce789f77.ngrok-free.app", {
         method: "POST",
         body: formData,
       });

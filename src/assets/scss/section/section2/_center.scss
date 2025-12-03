@@ -4,7 +4,6 @@
     justify-content: space-between;
 
     .container1{
-        border:1px solid red;
         width:500px;
         display:flex;
         flex-direction: column;
@@ -61,12 +60,11 @@
     }
 
     .container2{
-        border:1px solid blue;
-
+        
         .post_box{
+            border:1px solid white;
             width:400px;
             height:600px;
-            background-color: #ffffff;
         }
     }
 }
